@@ -1,1 +1,66 @@
-My Page
+<!doctype html>
+<!--
+  File:  /~jcruz/public_html/index.html
+  91.461 Assignment:  Creating Your First Web Page
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2015 by Joel Cruz.  All rights reserved.  May be freely 
+    copied or excerpted for educational purposes with credit to the author.
+  updated by JC on September 14, 2015
+
+  This is the home page that links all other assignments together.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--for viewinng on portable bevoces -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- link to the css file -->
+    <!--Google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <!--tab title-->
+    <title>Home</title>
+</head>
+<div id="header">
+    <h1>Joel's Home Page</h1>
+    <a class="thumb" href="#"><img src="assets/images/a0.png" alt="masquot"><span><img src="assets/images/a1.png" alt="masquot2"></span></a>
+</div>
+<div id="nav">
+    <ul id="menu">
+        <!--Class active keeps this the button highlighted-->
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+<div id="section">
+    <article>
+        <!--Testing out article tag to compare to body tag -->
+        <h1>About Me</h1>
+        <div class="author">
+            <img src="assets/images/self-portrait.jpg" width="160" height="160" alt="Self Portrait">
+            <!--cirlce image -->
+        </div>
+        <br>
+        <p>Hello,</p>
+        My name is <em>Joel Cruz</em> and I’m a CS (Computer Science) major at UMass Lowell. I am currently taking a class with Professor Jesse Heines where we have to display the skill in HTML and CSS by creating a web page. This is that web page. I am not a designer by trade but I dabble here and there in all different kinds of techniques in programming a design.
+        <!-- keyboard input-->
+        <kbd>ctrl alt del</kbd>
+    </article>
+</div>
+<div id="footer">
+    <p>Contact</p>
+    <p>
+        <!--
+        Is able to be clickable a picture aswell.
+        mailto: Open default mail program, create new message with the TO field already filled out.
+        -->
+        <a href="mailto:joel24478@gmail.com"><img src="assets/images/mail.png" alt="email"></a>
+        <a href="https://github.com/joel24478"><img src="assets/images/github.png" alt="github"></a>
+        <a href="https://www.linkedin.com/pub/joel-cruz/70/296/932"><img src="assets/images/linkedin.png" alt="linkedin"></a>
+    </p>
+    <p>Copyright © Joel Cruz</p>
+</div>
+
+</html>

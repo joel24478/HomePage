@@ -145,10 +145,13 @@ Section - Body of the page
     margin-bottom: auto;
 }
 
+<<<<<<< HEAD
 #section script {
     display: none;
 }
 
+=======
+>>>>>>> gh-pages
 
 /*Links found in section*/
 

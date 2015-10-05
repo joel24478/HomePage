@@ -252,7 +252,7 @@ Footer
     height: 60px;
 }
 
-.author {
+.author_portrait {
     /* source: http://monkeyraptor.johanpaul.net/2013/06/circle-clipping-photo-using-css.html */
     background-size: 1081px 1081px;
     background-position: 80px 20px;

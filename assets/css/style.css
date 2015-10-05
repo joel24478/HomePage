@@ -145,6 +145,10 @@ Section - Body of the page
     margin-bottom: auto;
 }
 
+#section script {
+    display: none;
+}
+
 
 /*Links found in section*/
 
@@ -152,9 +156,6 @@ Section - Body of the page
     /*remove the bullets on a list*/
     list-style-type: none;
 }
-
-
-/*Links found in section*/
 
 #section a {
     /*color blue*/
@@ -213,6 +214,10 @@ Section - Body of the page
     width: 500px;
     height: auto;
     text-align: center;
+}
+
+#content {
+    font-size: 12pt;
 }
 
 

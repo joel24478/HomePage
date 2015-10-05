@@ -131,11 +131,11 @@ Section - Body of the page
 #section {
     text-align: center;
     font-family: Courier;
-    width: 500px;
+    width: 800px;
     /*makes text look tighter together */
     min-height: 500px;
     height: auto;
-    padding: 100px;
+    padding: 30px 20px 20px 20px;
     border: 2px solid black;
     /*border for the text section of the page*/
     margin: 10px;
@@ -210,13 +210,27 @@ Section - Body of the page
     border-collapse: collapse;
     border-spacing: 0;
     font-family: Courier;
-    margin: 0px 0px 0px 0px;
+    margin: auto;
     width: 500px;
     height: auto;
     text-align: center;
 }
 
 #content {
+    font-size: 12pt;
+}
+
+#content h1 {
+    font-size: 30pt;
+    font-style: bold;
+}
+
+#content h2 {
+    font-size: 20pt;
+    font-style: italic;
+}
+
+#content h3 {
     font-size: 12pt;
 }
 

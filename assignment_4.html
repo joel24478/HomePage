@@ -1,0 +1,129 @@
+<!doctype html>
+<!--
+  File:  /~jcruz/public_html/assignment_4.html
+  91.461 Assignment:  Creating Your First Web Page
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2015 by Joel Cruz.  All rights reserved.  May be freely 
+    copied or excerpted for educational purposes with credit to the author.
+  updated by JC on Oct 4, 2015
+
+  This is the assignments 4 page dealing with formatting Dynamic text off of a json file.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <title>Assignment 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+  load jQuery library from the Google Content Delivery Network (CDN)
+  see http://encosia.com/3-reasons-why-you-should-let-google-host-jquery-for-you/
+  however, note that you obviously must be online for this to work
+  alternatively, you can download jQuery and store it locally from
+     http://jquery.com/download/
+-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- load the JSON file containing the text of Artist Lyrics (Joey BADA$$) -->
+    <script>
+    var story;
+    //Code taken from: https://teaching.cs.uml.edu/~heines/91.461/91.461-2010-11f/CSSTests/FormattingText/build/web/FormattingText-v9_Fall2014.html
+    // Note to advanced students:
+    //   Do *NOT* use the jQuery getJSON function here, because in this 
+    // application the AJAX call has to be synchronous (that is, we need to 
+    // wait for it to be done before continuing), and the getJSON function 
+    // is always asynchronous.  Reference:
+    // http://stackoverflow.com/questions/2765411/is-it-possible-to-set-asyncfalse-to-getjson-call
+    //   The other approach is to change the global jQuery ajaxSetup option, 
+    // but this is controversial, as discussed on the referenced page.
+    jQuery.ajax({
+        async: false,
+        dataType: "json",
+        url: "assets/json/Joey_Bada$$_Snakes.json",
+        success: function(data) {
+            story = data;
+        }
+    });
+
+    jQuery(document).ready(function() {
+        placeContent();
+    });
+    </script>
+    <!-- script to determine browser type and set first paragraph class appropriately -->
+    <script type="text/javascript">
+    //code taken from: https://teaching.cs.uml.edu/~heines/91.461/91.461-2010-11f/CSSTests/FormattingText/build/web/FormattingText-v9_Fall2014.html
+    var strFirstParaClass = "";
+    var strNavString = navigator.userAgent;
+    // console.log( navigator.userAgent ) ;
+    // console.log( strNavString ) ;
+    if (strNavString.indexOf("Firefox") !== -1) {
+        strFirstParaClass = "Firefox";
+    } else if (strNavString.indexOf("Chrome") !== -1) {
+        strFirstParaClass = "Chrome";
+    } else if (strNavString.indexOf("Safari") !== -1) {
+        strFirstParaClass = "Safari";
+    }
+    </script>
+    <!-- script to place JSON text in the placeholder on this page -->
+    <script type="text/javascript">
+    // N.B.  This version *does* apply the CSS.
+    function placeContent() {
+        var strContent = "";
+
+        // create dynamic content from JSON
+        strContent += "<h1 class='title'>" + story.title + "</h1>";
+        strContent += "<h2 class='author'>by " + story.author + "</h2>";
+        strContent += "<h3 class='location'>" + story.location + "</h3>";
+
+        // loop through all the paragraphs and sentences
+        for (var para = 0; para < story.text.paragraphs.length; para++) {
+            strContent += "<p class=\"" + strFirstParaClass + "\">";
+            for (var sent = 0; sent < story.text.paragraphs[para].length; sent++) {
+                strContent += story.text.paragraphs[para][sent] + "&nbsp; ";
+            }
+            strContent += "</p>";
+        }
+
+        // place dynamic content on page
+        // document.getElementById( "content" ).innerHTML = strContent ;
+        jQuery("#content").html(strContent);
+    }
+
+    // N.B.  This version does *NOT* apply the CSS!
+    function placeContent2() {
+        document.writeln("<h1 class='title'>" + story.title + "</h1>");
+        document.writeln("<h2 class='author'>by " + story.author + "</h2>");
+        document.writeln("<h2 class='authorsTitle'>" + story.authorsTitle + "</h2>");
+        document.writeln("<h3 class='locationLabel'>delivered at:</h3>");
+        document.writeln("<h3 class='location'>" + story.location + "</h3>");
+        document.writeln("<h3 class='date'>" + story.date + "</h3>");
+
+        for (var para = 0; para < story.text.paragraphs.length; para++) {
+            document.writeln("<p>");
+            for (var sent = 0; sent < story.text.paragraphs[para].length; sent++) {
+                document.writeln(story.text.paragraphs[para][sent] + "&nbsp; ");
+            }
+            document.writeln("</p>");
+        }
+    }
+    </script>
+</head>
+<div id="header">
+    <h1>Formatting Dynamic text</h1>
+</div>
+<div id="nav">
+    <ul id="menu">
+        <li><a href="index.html">Home</a></li>
+        <!--Class active keeps this the button highlighted-->
+        <li class="active"><a href="assignments.html">Assignments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+<div id="section">
+    <!--Dynamic content-->
+    <div id="content"></div>
+</div>
+
+</html>

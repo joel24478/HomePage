@@ -1,2 +1,3 @@
 # HomePage
-This is a test
+showcasing
+http://joel24478.github.io/HomePage. 

@@ -41,7 +41,7 @@
     jQuery.ajax({
         async: false,
         dataType: "json",
-        url: "assets/json/Joey_Bada$$_Snakes.json",
+        url: "assets/json/Joey_Bada$$_SnakesV2.json",
         success: function(data) {
             story = data;
         }
@@ -75,13 +75,24 @@
         // create dynamic content from JSON
         strContent += "<h1 class='title'>" + story.title + "</h1>";
         strContent += "<h2 class='author'>by " + story.author + "</h2>";
+        strContent += "<h3 class='producedBy'>" + story.producedBy + "</h3>";
         strContent += "<h3 class='location'>" + story.location + "</h3>";
 
+
         // loop through all the paragraphs and sentences
-        for (var para = 0; para < story.text.paragraphs.length; para++) {
+        /*for (var para = 0; para < story.text.paragraphs.length; para++) {
             strContent += "<p class=\"" + strFirstParaClass + "\">";
             for (var sent = 0; sent < story.text.paragraphs[para].length; sent++) {
                 strContent += story.text.paragraphs[para][sent] + "&nbsp; ";
+            }
+            strContent += "</p>";
+        }
+        */
+
+        for (var para = 0; para < story.text.paragraphs.length; para++) {
+            strContent += "<p class=\"" + strFirstParaClass + "\">";
+            for (var sent = 0; sent < story.text.paragraphs[para].length; sent++) {
+                strContent += story.text.paragraphs[para][sent] + "<br> ";
             }
             strContent += "</p>";
         }
@@ -122,6 +133,7 @@
     </ul>
 </div>
 <div id="section">
+    <img src="assets/images/joey-badass.jpg" alt="Joey BadA$$">
     <!--Dynamic content-->
     <div id="content"></div>
 </div>

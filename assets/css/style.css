@@ -145,6 +145,17 @@ Section - Body of the page
     margin-bottom: auto;
 }
 
+#section img {
+    /* source: http://monkeyraptor.johanpaul.net/2013/06/circle-clipping-photo-using-css.html */
+    background-size: 1081px 1081px;
+    background-position: 80px 20px;
+    border-radius: 50%;
+    width: 260px;
+    height: 240px;
+    overflow: hidden;
+    margin: auto;
+}
+
 #section script {
     display: none;
 }

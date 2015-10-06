@@ -222,7 +222,7 @@ Section - Body of the page
 
 #content h1 {
     font-size: 30pt;
-    font-style: bold;
+    font-style: normal;
 }
 
 #content h2 {

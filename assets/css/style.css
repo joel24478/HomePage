@@ -100,9 +100,9 @@ Header - Banner for site
 
 .thumb img {
     border: 1px solid #000;
-    margin: 75px auto;
-    width: 252px;
-    height: 252px;
+    margin: 65px 0px auto auto;
+    width: 500px;
+    height: 320px;
 }
 
 .thumb span {
@@ -282,8 +282,8 @@ Footer
     background-size: 1081px 1081px;
     background-position: 80px 20px;
     border-radius: 50%;
-    width: 260px;
-    height: 240px;
+    width: 260px !important;
+    height: 240px !important;
     overflow: hidden;
     margin: auto;
 }

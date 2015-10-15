@@ -195,10 +195,14 @@ Section - Body of the page
     text-shadow: 1px 1px 1px #fff;
 }
 
+.sectionTable tbody td:first-child {
+    background-color: #ff5819;
+}
+
 
 /*selects every odd row for the body of the table*/
 
-.sectionTable tbody tr:nth-child(odd) {
+.sectionTable tbody tr {
     background-color: #FF7845;
 }
 

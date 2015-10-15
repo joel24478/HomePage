@@ -32,20 +32,66 @@
     <!--Script to make table from the information gatthered after hitting submit-->
     <script>
     function TableCreater() {
-        var rows = $('input[name=rows').val();
-        var colums = $('input[name=colums').val();
+        //grab the values from the form and place them in variables
+        var rowsFrom = $('input[name=rowsFrom').val();
+        var columnsFrom = $('input[name=columnsFrom').val();
+        var rowsTo = $('input[name=rowsTo').val();
+        var columnsTo = $('input[name=columnsTo').val();
+        var rowCount = rowsTo - rowsFrom;
+        var columnCount = columnsTo - columnsFrom;
+        var value;
+        //used to store content so it can be place on the page
         var strContent = "";
-        console.log('Number of rows: ' + rows);
-        console.log('Number of columss: ' + colums);
+        var i, j, k;
+        console.log('Number of rowsFrom: ' + rowsFrom);
+        console.log('Number of rowsTo: ' + rowsTo);
+        console.log('Number of columnsFrom: ' + columnsFrom);
+        console.log('Number of columnsTo: ' + columnsTo);
+        console.log('Number of rowCount: ' + rowCount);
+        console.log('Number of columnCount: ' + columnCount);
 
-        strContent += "<table class='sectionTable'>";
-        strContent += "<thead><tr>"
-
-        for (var i = 0; i < rows; i++) {
-            strContent += "<th>" + i + "</th>"
+        if (rowCount > 15 || rowCount < 0) {
+            alert("Row range is too big(keep it 15 or lower please)");
+            return false;
         }
 
-        strContent += "</tr></thead>"
+        if (columnCount > 15 || columnCount < 0) {
+            alert("Column range is too big(keep it 15 or lower please)");
+            return false;
+        }
+
+        //starts the table
+        strContent += "<table class='sectionTable'>";
+        //creates top row
+        strContent += "<thead><tr>";
+        strContent += "<th>" + "</th>";
+
+        for (i = 1; i <= rowCount + 1; i++) {
+            value = parseInt(rowsFrom) + (i - 1);
+            strContent += "<th>" + value + "</th>";
+        }
+
+        strContent += "</tr></thead>";
+        strContent += '<tbody>';
+
+        for (i = 0; i <= columnCount; i++) {
+            strContent += '<tr>';
+            //Get the first number for the table
+            value = parseInt(columnsFrom) + i;
+            strContent += '<td>' + value + "</td>";
+            //for loops goes placing the actual multiplied value
+            for (j = 1; j <= rowCount + 1; j++) {
+                value = parseInt(rowsFrom) + (j - 1);
+                //console.log("value before = " + value);
+                value *= (parseInt(columnsFrom) + i);
+                strContent += "<td>" + value + "</td>";
+                //console.log("***value now = " + value);
+            }
+            strContent += "</tr>";
+            //console.log('i: ' + i);
+        }
+        //close table
+        strContent += "</tbody></table>";
 
         // place dynamic content on page
         document.getElementById("tableContent").innerHTML = strContent;
@@ -64,15 +110,18 @@
     </ul>
 </div>
 <div id="section">
-    <form onsubmit="return TableCreater()">
-        Number of Rows:
+    <form>
+        <label for="rowsFrom"> Number of Rows from: </label>
+        <input type="text" name="rowsFrom">
+        <label for="rowsTo"> to </label>
+        <input type="text" name="rowsTo">
         <br>
-        <input type="text" name="rows">
-        <br> Number of Colums:
+        <label for="columnsFrom"> Number of columns: </label>
+        <input type="text" name="columnsFrom">
+        <label for="columnsTo"> to </label>
+        <input type="text" name="columnsTo">
         <br>
-        <input type="text" name="colums">
-        <br>
-        <input type="submit" value="submit">
+        <input type="button" value="submit" onclick="TableCreater()">
     </form>
     <!--dynamic table-->
     <div id="tableContent">

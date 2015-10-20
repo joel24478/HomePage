@@ -60,6 +60,16 @@
             return false;
         }
 
+        if (isNaN(rowCount)) {
+            alert("Row entered has string. Enter digits pofavor (please)");
+            return false;
+        }
+
+        if (isNaN(columnCount)) {
+            alert("Column entered has string. Enter digits pofavor (please)");
+            return false;
+        }
+
         //starts the table
         strContent += "<table class='sectionTable'>";
         //creates top row

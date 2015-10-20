@@ -5,7 +5,7 @@
   Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
   Copyright (c) 2015 by Joel Cruz.  All rights reserved.  May be freely 
     copied or excerpted for educational purposes with credit to the author.
-  updated by JC on Oct 13, 2015
+  updated by JC on Oct 20, 2015
 
   This is the assignments 5 page dealing with creating a interactive dynamic table.
 -->
@@ -19,7 +19,7 @@
     <!--tab picture-->
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
     <!--tab tittle-->
-    <title>Assignment 4</title>
+    <title>Assignment 5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--
   load jQuery library from the Google Content Delivery Network (CDN)
@@ -43,6 +43,7 @@
         //used to store content so it can be place on the page
         var strContent = "";
         var i, j, k;
+        //testing out values that were grabbed from the form
         console.log('Number of rowsFrom: ' + rowsFrom);
         console.log('Number of rowsTo: ' + rowsTo);
         console.log('Number of columnsFrom: ' + columnsFrom);
@@ -50,6 +51,7 @@
         console.log('Number of rowCount: ' + rowCount);
         console.log('Number of columnCount: ' + columnCount);
 
+        //error checking to see if values entered is valid
         if (rowCount > 15 || rowCount < 0) {
             alert("Row range is too big(keep it 15 or lower please) or is two small(might have a negative value)");
             return false;
@@ -61,7 +63,7 @@
         }
 
         if (isNaN(rowCount)) {
-            alert("Row entered has string. Enter digits pofavor (please)");
+            alert("Row entered has string. Enter digits por favor (please)");
             return false;
         }
 
@@ -72,10 +74,10 @@
 
         //starts the table
         strContent += "<table class='sectionTable'>";
-        //creates top row
+        //creates top row for the table
         strContent += "<thead><tr>";
         strContent += "<th>" + "</th>";
-
+        //adds the values into the row for the table
         for (i = 1; i <= rowCount + 1; i++) {
             value = parseInt(rowsFrom) + (i - 1);
             strContent += "<th>" + value + "</th>";
@@ -105,11 +107,11 @@
 
         // place dynamic content on page
         document.getElementById("tableContent").innerHTML = strContent;
-    }
+    };
     </script>
 </head>
 <div id="header">
-    <h1>Formatting Dynamic text</h1>
+    <h1>Creating an Interactive Dynamic Table</h1>
 </div>
 <div id="nav">
     <ul id="menu">
@@ -122,14 +124,14 @@
 <div id="section">
     <form>
         <label for="rowsFrom"> Number of Rows from: </label>
-        <input type="text" name="rowsFrom">
+        <input type="text" name="rowsFrom" id="rowsFrom">
         <label for="rowsTo"> to </label>
-        <input type="text" name="rowsTo">
+        <input type="text" name="rowsTo" id="rowsTo">
         <br>
         <label for="columnsFrom"> Number of columns: </label>
-        <input type="text" name="columnsFrom">
+        <input type="text" name="columnsFrom" id="columnsFrom">
         <label for="columnsTo"> to </label>
-        <input type="text" name="columnsTo">
+        <input type="text" name="columnsTo" id="columnsTo">
         <br>
         <input type="button" value="submit" onclick="TableCreater()">
     </form>

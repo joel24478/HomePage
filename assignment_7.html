@@ -7,13 +7,13 @@
     copied or excerpted for educational purposes with credit to the author.
   updated by JC on Oct 20, 2015
 
-  This is the assignments 5 page dealing with creating a interactive dynamic table.
+  This is the assignments 7 page dealing with creating a interactive dynamic table.
 -->
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
     <!--Google fonts-->
     <link href='https://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
     <!--tab picture-->
@@ -113,42 +113,50 @@
     };
     </script>
 </head>
-<div id="header">
-    <h1>Creating an Interactive Dynamic Table</h1>
-</div>
-<div id="nav">
-    <ul id="menu">
-        <li><a href="index.html">Home</a></li>
-        <!--Class active keeps this the button highlighted-->
-        <li class="active"><a href="assignments.html">Assignments</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</div>
-<div id="section">
-    <form>
-        <label for="rowsFrom"> Number of Rows from: </label>
-        <input type="text" name="rowsFrom" id="rowsFrom">
-        <label for="rowsTo"> to </label>
-        <input type="text" name="rowsTo" id="rowsTo">
-        <br>
-        <label for="columnsFrom"> Number of columns: </label>
-        <input type="text" name="columnsFrom" id="columnsFrom">
-        <label for="columnsTo"> to </label>
-        <input type="text" name="columnsTo" id="columnsTo">
-        <br>
-        <input type="button" value="submit" onclick="TableCreater()">
-    </form>
-    <!--dynamic table-->
-    <div id="tableContent">
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Creating an Interactive Dynamic Table</h1>
+            <h2>Using JavaScript and jQuery</h2>
+        </div>
+    </header>
+    <div id="nav">
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <!--Class active keeps this the button highlighted-->
+            <li class="active"><a href="assignments.html">Assignments</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </div>
-</div>
-<div id="footer">
-    <p>
-        <a href="mailto:joel24478@gmail.com"><img src="assets/images/mail.png" alt="email"></a>
-        <a href="https://github.com/joel24478"><img src="assets/images/github.png" alt="github"></a>
-        <a href="https://www.linkedin.com/pub/joel-cruz/70/296/932"><img src="assets/images/linkedin.png" alt="linkedin"></a>
-    </p>
-    <p>Copyright © Joel Cruz</p>
-</div>
+    <section class="profile">
+        <div id="container">
+            <form>
+                <label for="rowsFrom"> Number of Rows from: </label>
+                <input type="text" name="rowsFrom" id="rowsFrom">
+                <label for="rowsTo"> to </label>
+                <input type="text" name="rowsTo" id="rowsTo">
+                <br>
+                <label for="columnsFrom"> Number of columns: </label>
+                <input type="text" name="columnsFrom" id="columnsFrom">
+                <label for="columnsTo"> to </label>
+                <input type="text" name="columnsTo" id="columnsTo">
+                <br>
+                <input type="button" value="submit" onclick="TableCreater()">
+            </form>
+            <!--dynamic table-->
+            <div id="tableContent">
+            </div>
+        </div>
+    </section>
+    <div id="footer">
+        <p>
+            <a href="mailto:joel24478@gmail.com"><img src="assets/images/mail.png" alt="email"></a>
+            <a href="https://github.com/joel24478"><img src="assets/images/github.png" alt="github"></a>
+            <a href="https://www.linkedin.com/pub/joel-cruz/70/296/932"><img src="assets/images/linkedin.png" alt="linkedin"></a>
+        </p>
+        <p>Copyright © Joel Cruz</p>
+    </div>
+</body>
 
 </html>

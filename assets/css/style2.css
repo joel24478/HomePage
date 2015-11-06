@@ -177,6 +177,8 @@ section {
 section .container {
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 section h1 {
@@ -247,6 +249,10 @@ section a:hover {
     background-color: #00578B;
 }
 
+section .sectionTable {
+    margin: 50px auto 50px;
+}
+
 .profile {
     background-color: #00578B;
     font-family: "Times New Roman";
@@ -276,6 +282,35 @@ section a:hover {
     color: #6FA92D;
 }
 
+.form {
+    margin: 35px auto 20px;
+}
+
+.form input {
+    margin: 0px 15px 20px 8px;
+}
+
+.form label {
+    margin-right: 10px;
+}
+
+.form input {
+    margin: 0px 0px 0px 25px;
+}
+
+section .form {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 515px;
+}
+
+section fieldset {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0px auto 30px auto;
+    width: 515px;
+}
+
 
 /*********************************************************************
 End of Section
@@ -298,7 +333,7 @@ Footer
     padding-top: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    position: absolute;
+    position: relative;
 }
 
 #footer img {

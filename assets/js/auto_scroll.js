@@ -1,4 +1,4 @@
-//allows smooth scrolling
+//allows automated smooth scrolling to target on page
 //https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(function() {
     $('a[href*=#]:not([href=#])').click(function() {

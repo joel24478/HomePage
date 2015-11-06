@@ -1,5 +1,24 @@
-function TableCreater() {
-    //grab the values from the form and place them in variables
+//window.onload = function() {
+$(document).ready(function() {
+    //runs code when onsubmit is called
+    // $('form').submit(function(event) {
+    //     //prevents the submit function from refreshing the page 
+    //     event.preventDefault();
+    // });
+    //Avoids form submit
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
+    $("#tableForm").validate({
+        //Callback for handling the actual submit when the form is valid
+        submitHandler: function(event) {
+            TableCreater();
+        }
+    });
+});
+
+function TableCreater() { //grab the values from the form and place them in variables
     var rowsFrom = $('input[name=rowsFrom').val();
     var columnsFrom = $('input[name=columnsFrom').val();
     var rowsTo = $('input[name=rowsTo').val();
@@ -17,10 +36,12 @@ function TableCreater() {
     console.log('Number of columnsTo: ' + columnsTo);
     console.log('Number of rowCount: ' + rowCount);
     console.log('Number of columnCount: ' + columnCount);
+    /*Commented out because jquery validation plugin is added to handle errors
     //check fpt errors in the users input
-    if (InputChecker(rowCount, columnCount);) {
-        return;
+    if (!InputChecker(rowCount, columnCount)) {
+        return false;
     }
+    */
     //starts the table
     strContent += "<table class='sectionTable'>";
     //creates top row for the table
@@ -59,21 +80,71 @@ function TableCreater() {
 };
 
 function InputChecker(rowCount, columnCount) {
+    var error = false;
+    if ($.trim($('#columnsFrom').val()) == '') {
+        $("#errorMessage").html("<p>Field is empty</p>");
+        $("#errorMessage").html("Enter value in Column");
+        $("#columnsFrom").css("background-color", "#F3090F");
+        error = true;
+        //return false;
+    }
+    if ($.trim($('#columnsTo').val()) == '') {
+        $("#errorMessage").html("<p>Field is empty</p>");
+        $("#errorMessage").html("Enter value in Column");
+        $("#columnsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
+    }
+    if ($.trim($('#rowsFrom').val()) == '') {
+        $("#errorMessage").html("<p>Field is empty</p>");
+        $("#errorMessage").html("Enter value in Column");
+        $("#rowsFrom").css("background-color", "#F3090F");
+        error = true;
+        //return false;
+    }
+
+    if ($.trim($('#rowsTo').val()) == '') {
+        $("#errorMessage").html("Enter value in Column");
+        $("#rowsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
+    }
     if (rowCount > 15 || rowCount < 0) {
-        alert("Row range is too big(keep it 15 or lower please) or is two small(might have a negative value)");
-        return false;
+        $("#errorMessage").html("<p>Row range is too big or is two small, keep range at 15 and avoid a negative range</p>");
+        $("#rowsFrom").css("background-color", "#F3090F");
+        $("#rowsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
     }
     if (isNaN(rowCount)) {
-        alert("Row entered has string. Enter digits por favor (please)");
-        return false;
+        $("#errorMessage").html("<p>Value entered in Row is a string. Enter digits please</p>");
+        $("#rowsFrom").css("background-color", "#F3090F");
+        $("#rowsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
     }
     if (columnCount > 15 || columnCount < 0) {
-        alert("Column range is too big(keep it 15 or lower please) or is two small(might have a negative value)");
-        return false;
+        $("#errorMessage").html("<p>Column range is too big or is two small, keep range at 15 and avoid a negative range</p>");
+        $("#columnsFrom").css("background-color", "#F3090F");
+        $("#columnsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
     }
     if (isNaN(columnCount)) {
-        alert("Column entered has string. Enter digits pofavor (please)");
-        return false;
+        $("#errorMessage").html("Value entered in Column is a string. Enter digits please");
+        $("#columnsFrom").css("background-color", "#F3090F");
+        $("#columnsTo").css("background-color", "#F3090F");
+        error = true;
+        //return false;
     }
-    return true;
+    if (error == false) {
+        $("#errorMessage").html("");
+        $("#columnsFrom").css("background-color", "#ffffff");
+        $("#columnsTo").css("background-color", "#ffffff");
+        $("#rowsFrom").css("background-color", "#ffffff");
+        $("#rowsTo").css("background-color", "#ffffff");
+    }
+    //clears away error message 
+
+    return false;
 };

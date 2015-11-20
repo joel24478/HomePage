@@ -1,65 +1,8 @@
-//window.onload = function() {
-$(document).ready(function() {
-    //runs code when onsubmit is called
-    // $('form').submit(function(event) {
-    //     //prevents the submit function from refreshing the page 
-    //     event.preventDefault();
-    // });
-    //Avoids form submit
-    jQuery.validator.setDefaults({
-        debug: true,
-        success: "valid"
-    });
-    $("#tableForm").validate({
-        rules: {
-            rowsFrom: {
-                required: true,
-                range: [0, 20]
-            },
-            rowsTo: {
-                required: true,
-                min: function() {
-                    return $("#rowsFrom").val();
-                },
-                max: 25
-            },
-            columnsFrom: {
-                required: true,
-                range: [0, 40]
-            },
-            columnsTo: {
-                required: true,
-                min: function() {
-                    return $("#columnsFrom").val();
-                },
-                max: 60
-            },
-        },
-        messages: {
-            rowsTo: {
-                min: function() {
-                    return "Please enter a number greater than or equal to " + $("#rowsFrom").val();
-                }
-            },
-            columnsTo: {
-                min: function() {
-                    return "Please enter a number greater than or equal to " + $("#columnsFrom").val();
-                }
-            }
-        },
-        //Callback for handling the actual submit when the form is valid
-        submitHandler: function(event) {
-            TableCreater();
-        }
-
-    });
-});
-
-function TableCreater() { //grab the values from the form and place them in variables
-    var rowsFrom = $('input[name=rowsFrom').val();
-    var columnsFrom = $('input[name=columnsFrom').val();
-    var rowsTo = $('input[name=rowsTo').val();
-    var columnsTo = $('input[name=columnsTo').val();
+function TableCreater(rowFrom, rowTo, columnFrom, columnTo) { //grab the values from the form and place them in variables
+    var rowsFrom = rowFrom;
+    var columnsFrom = columnFrom;
+    var rowsTo = rowTo;
+    var columnsTo = columnTo;
     var rowCount = rowsTo - rowsFrom;
     var columnCount = columnsTo - columnsFrom;
     var value;
@@ -116,7 +59,7 @@ function TableCreater() { //grab the values from the form and place them in vari
     document.getElementById("tableContent").innerHTML = strContent;
 };
 
-function InputChecker(rowCount, columnCount) {
+$(function InputChecker(rowCount, columnCount) {
     var error = false;
     if ($.trim($('#columnsFrom').val()) == '') {
         $("#errorMessage").html("<p>Field is empty</p>");
@@ -184,4 +127,4 @@ function InputChecker(rowCount, columnCount) {
     //clears away error message 
 
     return false;
-};
+});

@@ -7,7 +7,7 @@
     copied or excerpted for educational purposes with credit to the author.
   updated by JC on Oct 20, 2015
 
-  This is the assignments 7 page dealing with creating a interactive dynamic table.
+  This is the assignments 8 page dealing with jquery-ui.
 -->
 <html>
 
@@ -19,21 +19,30 @@
     <!--tab picture-->
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
     <!--tab tittle-->
-    <title>Assignment 7</title>
+    <title>Assignment 8</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--
-  load jQuery library from the Google Content Delivery Network (CDN)
-  see http://encosia.com/3-reasons-why-you-should-let-google-host-jquery-for-you/
-  however, note that you obviously must be online for this to work
-  alternatively, you can download jQuery and store it locally from
-     http://jquery.com/download/
--->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- 
-    <script src="assets/js/TableCreater.js"></script>
-    -->
+    <!--jQuery-->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <!--jQuery-ui-->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <script src="assets/js/jquery-ui.js"></script>
+    <script>
+    $(document).ready(function() {
+        console.log("loading tabs...");
+        $("#tabs").tabs();
+        console.log("loaded tabs");
+
+        console.log("loading sliders...");
+        $("#rowSlider").slider();
+        $("#columnSlider").slider();
+        console.log("loaded sliders");
+
+    });
+    </script>
     <!--Script to make table from the information gatthered after hitting submit-->
     <script src="assets/js/TableCreater.js"></script>
+    <script src="assets/js/sliderHandler.js"></script>
+    <script src="assets/js/personal-validator.js"></script>
     <!--jQuery validation plugin-->
     <script src="assets/js/jquery.validate.js"></script>
     <script src="assets/js/additional-methods.js"></script>
@@ -61,21 +70,19 @@
                 <form class="form" id="tableForm" method="get" action="">
                     <p>
                         <h3>Number of Rows</h3>
-                        <label for="rowsFrom"> from </label>
-                        <input type="digits" name="rowsFrom" id="rowsFrom" required>
+                        <label for="rowAmount"> Row Range </label>
+                        <input type="text" id="rowAmount">
                     </p>
                     <p>
-                        <label for="rowsTo"> to </label>
-                        <input type="digits" name="rowsTo" id="rowsTo" required>
+                        <div id="rowSlider" class="slider"></div>
                     </p>
                     <p>
                         <h3>Number of Columns</h3>
-                        <label for="columnsFrom"> from </label>
-                        <input type="digits" name="columnsFrom" id="columnsFrom" required>
+                        <label for="columnAmount"> Column Range </label>
+                        <input type="text" id="columnAmount">
                     </p>
                     <p>
-                        <label for="columnsTo"> to </label>
-                        <input type="digits" name="columnsTo" id="columnsTo" required>
+                        <div id="columnSlider" class="slider"></div>
                     </p>
                     <br>
                     <input class="forceCenter" type="submit" value="Submit" name="submit" id="submit">
@@ -85,8 +92,17 @@
                 -->
                 </form>
             </fieldset>
-            <!--dynamic table-->
-            <div id="tableContent">
+            <div id="container">
+                <!-- Tabs -->
+                <div id="tabs">
+                    <ul>
+                        <li><a href="#tabs-1">First</a></li>
+                        <div id="tabs-1">
+                            <!--dynamic table-->
+                            <div id="tableContent">
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>
     </section>

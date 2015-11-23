@@ -43,6 +43,7 @@
     <script src="assets/js/TableCreater.js"></script>
     <script src="assets/js/sliderHandler.js"></script>
     <script src="assets/js/personal-validator.js"></script>
+    <script src="assets/js/tabHandler.js"></script>
     <!--jQuery validation plugin-->
     <script src="assets/js/jquery.validate.js"></script>
     <script src="assets/js/additional-methods.js"></script>
@@ -59,15 +60,14 @@
     </div>
     <header>
         <div class="container">
-            <h1>Creating an Interactive Dynamic Table</h1>
-            <h2>Using JavaScript and jQuery</h2>
+            <h1>Using the jQuery UI Slider and Tab Widgets</h1>
         </div>
     </header>
     <section style="background-color:#FFFFFF; color:#000000">
-        <div id="container">
+        <div class="container">
             <fieldset>
                 <legend>Please Enter The Tables Range</legend>
-                <form class="form" id="tableForm" method="get" action="">
+                <form class="form" id="tableForm" method="get">
                     <p>
                         <h3>Number of Rows</h3>
                         <label for="rowAmount"> Row Range </label>
@@ -85,23 +85,24 @@
                         <div id="columnSlider" class="slider"></div>
                     </p>
                     <br>
-                    <input class="forceCenter" type="submit" value="Submit" name="submit" id="submit">
+                    <input class="forceCenter" type="submit" value="Add a Tab" name="submit" id="submit">
                     <!-- Has been commented out due to jquery validator plugin being used, so its not needed
                             *can be used with my personal error handling code found in TableCreater.js 
                     <p><span id="errorMessage"></span></p>
                 -->
                 </form>
             </fieldset>
-            <div id="container">
+            <div class="container">
                 <!-- Tabs -->
                 <div id="tabs">
                     <ul>
-                        <li><a href="#tabs-1">First</a></li>
-                        <div id="tabs-1">
-                            <!--dynamic table-->
-                            <div id="tableContent">
-                            </div>
+                        <li><a href="#tabs-0">0</a></li>
+                    </ul>
+                    <div id="tabs-0">
+                        <!--dynamic table-->
+                        <div id="tableContent-0">
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

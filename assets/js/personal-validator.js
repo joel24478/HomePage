@@ -48,7 +48,7 @@ $(document).ready(function() {
         },
         //Callback for handling the actual submit when the form is valid
         submitHandler: function(event) {
-            TableCreater();
+            addTab("#tabs");
         }
 
     });

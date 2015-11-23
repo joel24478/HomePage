@@ -59,3 +59,7 @@ The css to handle all of jquery-ui styles
 .ui-tabs-hide {
     display: none;
 }
+
+.ui-icon-circle-close {
+    cursor: pointer;
+}

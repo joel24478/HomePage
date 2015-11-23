@@ -1,4 +1,4 @@
-function TableCreater(rowFrom, rowTo, columnFrom, columnTo) { //grab the values from the form and place them in variables
+function TableCreater(rowFrom, rowTo, columnFrom, columnTo, id) { //grab the values from the form and place them in variables
     var rowsFrom = rowFrom;
     var columnsFrom = columnFrom;
     var rowsTo = rowTo;
@@ -8,14 +8,17 @@ function TableCreater(rowFrom, rowTo, columnFrom, columnTo) { //grab the values 
     var value;
     //used to store content so it can be place on the page
     var strContent = "";
+    var tableContent = "tableContent-" + id;
     var i, j, k;
     //testing out values that were grabbed from the form
-    console.log('Number of rowsFrom: ' + rowsFrom);
+
+    /*console.log('Number of rowsFrom: ' + rowsFrom);
     console.log('Number of rowsTo: ' + rowsTo);
     console.log('Number of columnsFrom: ' + columnsFrom);
     console.log('Number of columnsTo: ' + columnsTo);
     console.log('Number of rowCount: ' + rowCount);
     console.log('Number of columnCount: ' + columnCount);
+    */
     /*Commented out because jquery validation plugin is added to handle errors
     //check fpt errors in the users input
     if (!InputChecker(rowCount, columnCount)) {
@@ -55,8 +58,9 @@ function TableCreater(rowFrom, rowTo, columnFrom, columnTo) { //grab the values 
     //close table
     strContent += "</tbody></table>";
 
+    console.log("Creating table for: " + tableContent);
     // place dynamic content on page
-    document.getElementById("tableContent").innerHTML = strContent;
+    document.getElementById(tableContent).innerHTML = strContent;
 };
 
 $(function InputChecker(rowCount, columnCount) {

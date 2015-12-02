@@ -31,7 +31,7 @@
         console.log("loading tabs...");
         $("#tabs").tabs();
         console.log("loaded tabs");
-
+        TableCreater(0, 5, 0, 5, tabCount());
         console.log("loading sliders...");
         $("#rowSlider").slider();
         $("#columnSlider").slider();
@@ -71,7 +71,7 @@
                     <p>
                         <h3>Number of Rows</h3>
                         <label for="rowAmount"> Row Range </label>
-                        <input type="text" id="rowAmount">
+                        <input type="digit" name="rowAmoung" id="rowAmount">
                     </p>
                     <p>
                         <div id="rowSlider" class="slider"></div>
@@ -79,7 +79,7 @@
                     <p>
                         <h3>Number of Columns</h3>
                         <label for="columnAmount"> Column Range </label>
-                        <input type="text" id="columnAmount">
+                        <input type="digit" name="columnAmount" id="columnAmount">
                     </p>
                     <p>
                         <div id="columnSlider" class="slider"></div>

@@ -1,8 +1,7 @@
  $(function() {
      rowsTo = columnsTo = 5;
      rowsFrom = columnsFrom = 0;
-     label = $.find();
-     TableCreater(rowsFrom, rowsTo, columnsFrom, columnsTo, currentTab());
+
      $("#rowSlider").slider({
          range: true,
          min: -15,
@@ -16,10 +15,17 @@
              rowsFrom = ui.values[0];
              rowsTo = ui.values[1]; // global call
              $("#rowAmount").val(ui.values[0] + " to " + ui.values[1]);
-             TableCreater(rowsFrom, rowsTo, columnsFrom, columnsTo, currentTab());
+
+             TableCreater(rowsFrom, rowsTo, columnsFrom, columnsTo, tabCount());
+         },
+         change: function(event, ui) {
+             //ui.value[0] = ;
+             //ui.values[1] = ;
          }
      });
+
      $("#rowAmount").val(" " + $("#rowSlider").slider("values", 0) + " to " + $("#rowSlider").slider("values", 1));
+
      $("#columnSlider").slider({
          range: true,
          min: -15,
@@ -33,8 +39,10 @@
              columnsFrom = ui.values[0];
              columnsTo = ui.values[1];
              $("#columnAmount").val(ui.values[0] + " to " + ui.values[1]);
-             TableCreater(rowsFrom, rowsTo, columnsFrom, columnsTo, currentTab());
+             TableCreater(rowsFrom, rowsTo, columnsFrom, columnsTo, tabCount());
          }
      });
+
      $("#columnAmount").val(" " + $("#columnSlider").slider("values", 0) + " to " + $("#columnSlider").slider("values", 1));
+
  });

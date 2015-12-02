@@ -47,7 +47,15 @@ function lastTab() {
 function tabCount() {
     return tabCounter;
 }
-//return the tab that we are currently displaying
+//return the ui-id(panel) for the tab that we are currently displaying
 function currentTab() {
-    return $("#tabs").tabs('option', 'active');
+    // var currentTab = $(".ui-state-active").attr("aria-controls");
+    // console.log("currentTab: " + currentTab);
+    // if (currentTab == undefined) {
+    //     return 0;
+    // }
+    // currentTab = currentTab.replace('tabs-', '');
+    console.log("currentTab returns: " + $(".ui-state-active").attr("aria-controls").replace('tabs-', ''));
+    // return currentTab;
+    return $(".ui-state-active").attr("aria-controls").replace('tabs-', '');
 }

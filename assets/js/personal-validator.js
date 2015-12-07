@@ -13,7 +13,7 @@ $(document).ready(function() {
         rules: {
             rowsFrom: {
                 required: true,
-                range: [0, 20]
+                range: [0, 15]
             },
             rowsTo: {
                 required: true,
@@ -24,7 +24,7 @@ $(document).ready(function() {
             },
             columnsFrom: {
                 required: true,
-                range: [0, 40]
+                range: [0, 15]
             },
             columnsTo: {
                 required: true,

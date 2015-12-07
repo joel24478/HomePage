@@ -1,0 +1,82 @@
+/* beautify preserve:start */
+
+
+/*
+  File:  /~jcruz/public_html/assets/css/scrabble.css
+  91.461 Assignment:  Styling Your First Web Page With CSS
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2015 by Joel Cruz.  All rights reserved.  May be freely 
+    copied or excerpted for educational purposes with credit to the author.
+  updated by JC on December 3, 2015*/
+
+.tiles {
+    width: 70px;
+    height: 70px;
+}
+
+div #tile0 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile1 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile2 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile3 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile4 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile5 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div #tile6 {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.scrabbleBoard {
+    display: inline-block;
+    float: left;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+}
+
+.scrabbleRack {
+    display: block;
+    margin: 85px auto;
+    width: 550px;
+    height: 100px;
+}
+
+
+/* beautify preserve:end */

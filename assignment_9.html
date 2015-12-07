@@ -1,0 +1,82 @@
+<!doctype html>
+<!--
+  File:  /~jcruz/public_html/assignment_4.html
+  91.461 Assignment:  Creating Your First Web Page
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2015 by Joel Cruz.  All rights reserved.  May be freely 
+    copied or excerpted for educational purposes with credit to the author.
+  updated by JC on Oct 20, 2015
+
+  This is the assignments 9 page dealing with jquery-ui to create a scrabble game.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/scrabble.css">
+    <!--Google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <!--tab picture-->
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
+    <!--tab tittle-->
+    <title>Assignment 9</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jQuery-->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <!--jQuery-ui-->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <script src="assets/js/jquery-ui.js"></script>
+    <!--Scrabble-->
+    <script src="assets/js/ScrabbleArray.js"></script>
+    <script src="assets/js/Scrabble.js"></script>
+    <script>
+    $(function() {
+        $("#tile").draggable();
+        $("#scrabbleRack").droppable({
+            accept: '#draggable'
+        });
+        createBoard();
+        fillRack();
+    });
+    </script>
+</head>
+
+<body>
+    <div id="nav">
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <!--Class active keeps this the button highlighted-->
+            <li class="active"><a href="assignments.html">Assignments</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <header>
+        <div class="container">
+            <h1>Scrabble Using jQuery UI</h1>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <!--Dynamic Board-->
+            <div id="scrabbleBoard"></div>
+            <div id="scrabbleRack">
+                <img class="scrabbleRack" src="assets/images/scrabble/Scrabble_Rack.png" alt="Rack">
+            </div>
+            <!--Dynamic tiles-->
+            <div id="tiles"></div>
+        </div>
+    </section>
+    <div id="footer">
+        <p>
+            <a href="mailto:joel24478@gmail.com"><img src="assets/images/mail.png" alt="email"></a>
+            <a href="https://github.com/joel24478"><img src="assets/images/github.png" alt="github"></a>
+            <a href="https://www.linkedin.com/pub/joel-cruz/70/296/932"><img src="assets/images/linkedin.png" alt="linkedin"></a>
+        </p>
+        <p>Copyright © Joel Cruz</p>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

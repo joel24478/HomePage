@@ -63,6 +63,15 @@ div #tile6 {
     margin: 0px;
 }
 
+
+/*forgot to make this css rule and dropping and draggable didnt work*/
+
+.ui-droppable {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
 .scrabbleBoard {
     display: inline-block;
     float: left;

@@ -34,7 +34,7 @@ function findWord() {
     }
     if (!wordFound) {
         console.log("Word Not Found");
-        document.getElementById("errors").innerHTML = "Word Not Valid<p>Word Does Not Exist</p>";
+        document.getElementById("errors").innerHTML = "Word Not Valid: Word Does Not Exist";
     }
     console.log("End Search");
 }
@@ -62,16 +62,18 @@ function checkWord() {
             console.log(word);
         }
     };
+    //check to see if there is space between the words
     for (var i = firstIndex; i <= lastIndex; i++) {
+        //if theres a white space then word is invalid
         if (lettersOnBoard[i] == '') {
             console.log("invalid Word");
-            document.getElementById("errors").innerHTML = "Word Not Valid<p>*Has Spaces</p>";
+            document.getElementById("errors").innerHTML = "Word Not Valid: Has Spaces Between Letters";
             invalidWord = true;
         }
     };
     console.log("word: " + word);
 }
-
+//function for the submit button
 function submitWord() {
     checkWord();
     if (invalidWord) {
@@ -79,4 +81,14 @@ function submitWord() {
     } else {
         findWord();
     }
+}
+//resets the tiles and board
+function resetBoard() {
+    createBoard();
+    fillRack();
+    document.getElementById("errors").innerHTML = "None";
+}
+//New Letters
+function newTiles() {
+    fillRack();
 }

@@ -24,7 +24,7 @@ var invalidWord = false;
 function findWord() {
 
     console.log("Searching for word: " + word);
-    for (var i = dict.length - 1; i >= 0; i--) {
+    for (var i = dictionary.length - 1; i >= 0; i--) {
         if (dictionary[i] == word) {
             console.log("Word found!");
             wordFound = true;

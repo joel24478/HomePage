@@ -8,8 +8,7 @@ $.get("assets/files/dictionary.txt", function(txt) {
     var words = txt.split("\n");
 
     for (var i = 0; i < words.length; i++) {
-        dictionary[i] = words[i];
-        console.log(dictionary);
+        dictionary[i] = words[i].toUpperCase();
     }
 });
 console.log("Finished dictionary");

@@ -4,7 +4,6 @@ var dictionary = new Array();
 console.log("Creating dictionary...");
 $.get("assets/files/dictionary.txt", function(txt) {
     // Get an array of all the words
-    console.log("test1");
     var words = txt.split("\n");
 
     for (var i = 0; i < words.length; i++) {
@@ -20,21 +19,22 @@ var lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
 //words on the board
 var wordsOnBoard = [];
 var word = '';
-var wordFound = false;
 var invalidWord = false;
 
 //Finds if word formed is an actual word
 function findWord() {
-
+    var wordFound = false;
     console.log("Searching for word: " + word);
     for (var i = dictionary.length - 1; i >= 0; i--) {
         if (dictionary[i] == word) {
             console.log("Word found!");
+            document.getElementById("errors").innerHTML = "Word Found!";
             wordFound = true;
         }
     }
     if (!wordFound) {
         console.log("Word Not Found");
+        document.getElementById("errors").innerHTML = "Word Not Valid<p>Word Does Not Exist</p>";
     }
     console.log("End Search");
 }
@@ -76,7 +76,6 @@ function submitWord() {
     checkWord();
     if (invalidWord) {
         console.log("word not valid");
-        document.getElementById("errors").innerHTML = "Word Not Valid<p>Word Might:<p>*Not Exist</p></p>";
     } else {
         findWord();
     }

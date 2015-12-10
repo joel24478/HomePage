@@ -1,52 +1,139 @@
+var score = 0;
+var letter = '';
+var letterIndex = 0;
 //Sets up the board to a basic oneline pattern
 function createBoard() {
     strContent = '';
 
     for (var i = 0; i < 15; i++) {
         if (i == 2 || i == 12) {
-            strContent += '<div id="DWS' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_DWS.jpg" alt="DWS"></div>';
-            $("#DWS").droppable({
-                accept: '#tile0'
-            });
+            strContent += '<div id="DWS' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_DWS.jpg" alt="' + i + '"></div>';
 
         } else if (i == 6 || i == 8) {
-            strContent += '<div id="DLS' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_DLS.jpg" alt="DLS"></div>';
-            $("#DLS").droppable({
-                accept: '#tile0'
-            });
+            strContent += '<div id="DLS' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_DLS.jpg" alt="' + i + '"></div>';
         } else {
-            strContent += '<div id="Blank' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_Blank.png" alt="Blank"></div>';
-            $("#Blank").droppable({
-                accept: '#tile0'
-            });
+            strContent += '<div id="Blank' + i + '"><img class="scrabbleBoard" src="assets/images/scrabble/Scrabble_Board_Piece_Blank.png" alt="' + i + '"></div>';
         }
     };
     document.getElementById("scrabbleBoard").innerHTML = strContent;
+    console.log("creating droppables");
     for (var i = 0; i < 15; i++) {
         if (i == 2 || i == 12) {
+            console.log("creating droppable DWS");
             $("#DWS" + i).droppable({
-                accept: '#tile0'
+                tolerance: 'intersect',
+                //accept: '.ui-draggable',
+                drop: function(event, ui) {
+                    console.log("dropped");
+                    //snap to center modified from here:
+                    /* http://stackoverflow.com/questions/26746823/jquery-ui-drag-and-drop-snap-to-center */
+                    //got it from Alex Nevers
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function(pos) {
+                            $(this).animate(pos, 200, "linear");
+                        }
+                    });
+                    $(this).droppable('option', 'accept', ui.draggable); //lets draggable object be placed ontop of this droppable object 
+                    //sets object so it cant be moved
+                    //easier to keep score since hovering activates updateScore()
+                    ui.draggable.draggable("option", "disabled", true);
+                    console.log("passed value to updateScore: " + ui.draggable.children("img").attr("alt"));
+                    console.log("tile being dropped: " + ui.draggable.attr("id"));
+                    //update score based on the value of the tile which is stored in alt attribute
+                    updateScore(parseInt(ui.draggable.children("img").attr("alt")));
+                    //get the letter of the tile
+                    letter = ui.draggable.children("img").attr("src").replace('assets/images/scrabble/Scrabble_Tile_', '').replace('.jpg', '');
+                    letterIndex = $(this).children("img").attr("alt");
+                    console.log(letter + ' index: ' + letterIndex);
+                    //pass the letter and index for the word to be formed
+                    updateLettersOnBoard(letter, letterIndex);
+                },
+                tolerance: 'intersect'
             });
-
         } else if (i == 6 || i == 8) {
+            console.log("creating droppable DLS");
             $("#DLS" + i).droppable({
-                accept: '#tile0'
+                tolerance: 'intersect',
+                //accept: '.ui-draggable',
+                drop: function(event, ui) {
+                    console.log("dropped");
+                    //snap to center modified from here:
+                    /* http://stackoverflow.com/questions/26746823/jquery-ui-drag-and-drop-snap-to-center */
+                    //got it from Alex Nevers
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function(pos) {
+                            $(this).animate(pos, 200, "linear");
+                        }
+                    });
+                    $(this).droppable('option', 'accept', ui.draggable); //lets draggable object be placed ontop of this droppable object 
+                    //sets object so it cant be moved
+                    //easier to keep score since hovering activates updateScore()
+                    ui.draggable.draggable("option", "disabled", true);
+                    console.log("passed value to updateScore: " + ui.draggable.children("img").attr("alt"));
+                    console.log("tile being dropped: " + ui.draggable.attr("id"));
+                    //update score based on the value of the tile which is stored in alt attribute
+                    //converts string to int with parseInt function
+                    updateScore(parseInt(ui.draggable.children("img").attr("alt")) * 2);
+                    //get the letter of the tile
+                    letter = ui.draggable.children("img").attr("src").replace('assets/images/scrabble/Scrabble_Tile_', '').replace('.jpg', '');
+                    letterIndex = $(this).children("img").attr("alt");
+                    console.log(letter + ' index: ' + letterIndex);
+                    //pass the letter and index for the word to be formed
+                    updateLettersOnBoard(letter, letterIndex);
+                },
+                tolerance: 'intersect'
             });
         } else {
+            console.log("creating droppable Blank");
             $("#Blank" + i).droppable({
-                accept: '#tile0'
+                tolerance: 'intersect',
+                //accept: '.ui-draggable',
+                drop: function(event, ui) {
+                    console.log("dropped");
+                    //snap to center modified from here:
+                    /* http://stackoverflow.com/questions/26746823/jquery-ui-drag-and-drop-snap-to-center */
+                    //got it from Alex Nevers
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function(pos) {
+                            $(this).animate(pos, 200, "linear");
+                        }
+                    });
+                    $(this).droppable('option', 'accept', ui.draggable); //lets draggable object be placed ontop of this droppable object 
+                    //sets object so it cant be moved
+                    //easier to keep score since hovering activates updateScore()
+                    ui.draggable.draggable("option", "disabled", true);
+                    console.log("passed value to updateScore: " + ui.draggable.children("img").attr("alt"));
+                    console.log("tile being dropped: " + ui.draggable.attr("id"));
+                    //update score based on the value of the tile which is stored in alt attribute
+                    updateScore(parseInt(ui.draggable.children("img").attr("alt")));
+                    //get the letter of the tile
+                    letter = ui.draggable.children("img").attr("src").replace('assets/images/scrabble/Scrabble_Tile_', '').replace('.jpg', '');
+                    letterIndex = $(this).children("img").attr("alt");
+                    console.log(letter + ' index: ' + letterIndex);
+                    //pass the letter and index for the word to be formed
+                    updateLettersOnBoard(letter, letterIndex);
+                },
+                tolerance: 'intersect'
             });
         }
     }
 }
 //Fills the rack with tiles
 function fillRack() {
-    var letter = '';
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //All possible letters to chose from
     var strContent = '';
     var rackPosition = $("#scrabbleRack").offset(); //get rack position
     var boardPosition = $("#scrabbleBoard").position(); //get boards position
-    var tilePosition;
+    var tileValue = '';
 
     // console.log("scrabbleBoard position top: " + boardPosition.top);
     // console.log("scrabbleBoard position left: " + boardPosition.left);
@@ -67,20 +154,25 @@ function fillRack() {
             console.log("number-remaining(before): " + ScrabbleTiles[letter]["number-remaining"]);
             ScrabbleTiles[letter]["number-remaining"]--; //decrement the number of availble tiles
             console.log("number-remaining(after): " + ScrabbleTiles[letter]["number-remaining"]);
-            strContent += addTile(letter, i);
-            console.log("strContent: " + strContent);
+            tileValue = ScrabbleTiles[letter]["value"];
+            console.log("tileValue: " + tileValue);
+            strContent += addTile(letter, i, tileValue);
+            //console.log("strContent: " + strContent);
         }
     }
     document.getElementById("tiles").innerHTML = strContent;
     for (var i = 0; i < 7; i++) {
         //set tiles on rack
+        console.log("Creating tile" + i);
         $("#tile" + i).offset({
-            top: rackPosition.top,
-            left: rackPosition.left + 450 + (70 * i) //move the position by 500(width of rack) + (70(size of tile) * i)
-        })
+                top: rackPosition.top,
+                left: rackPosition.left + 450 + (70 * i) //move the position by 500(width of rack) + (70(size of tile) * i)
+            })
+            //console.log("Making tile" + i + " draggable");
         $("#tile" + i).draggable({
-            snap: ".scrabbleBoard",
-            revert: "valid"
+            snap: ".ui-droppable",
+            snapMode: "inner",
+            revert: 'invalid'
         });
     }
 
@@ -91,6 +183,14 @@ function fillRack() {
  *gets passed a letter and makes html code to be added
  * @returns {string} - html code
  */
-function addTile(letter, number) {
-    return "<div id='tile" + number + "'> <img class='tiles' src='assets/images/scrabble/Scrabble_Tile_" + letter + ".jpg' alt='Board'></div>";
+function addTile(letter, number, value) {
+    return "<div id='tile" + number + "'> <img class='tiles' src='assets/images/scrabble/Scrabble_Tile_" + letter + ".jpg' alt='" + value + "'></div>";
+}
+/**
+ * @param {integer} value - tile piece value
+ *gets passed a the value to be added onto score
+ */
+function updateScore(value) {
+    score += value;
+    document.getElementById("points").innerHTML = score;
 }

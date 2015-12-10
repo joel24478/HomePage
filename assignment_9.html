@@ -30,12 +30,9 @@
     <!--Scrabble-->
     <script src="assets/js/ScrabbleArray.js"></script>
     <script src="assets/js/Scrabble.js"></script>
+    <script src="assets/js/WordSearch.js"></script>
     <script>
     $(function() {
-        $("#tile").draggable();
-        $("#scrabbleRack").droppable({
-            accept: '#draggable'
-        });
         createBoard();
         fillRack();
     });
@@ -58,11 +55,18 @@
     </header>
     <section>
         <div class="container">
+            <div id="scoreBoard">
+                <fieldset>
+                    <legend>Score</legend>
+                    <div id="points">0</div>
+                </fieldset>
+            </div>
             <!--Dynamic Board-->
             <div id="scrabbleBoard"></div>
             <div id="scrabbleRack">
                 <img class="scrabbleRack" src="assets/images/scrabble/Scrabble_Rack.png" alt="Rack">
             </div>
+            <button onclick="submitWord()">Submit Word</button>
             <!--Dynamic tiles-->
             <div id="tiles"></div>
         </div>

@@ -81,11 +81,15 @@ function submitWord() {
     } else {
         findWord();
     }
+    word = '';
+    lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 }
 //resets the tiles and board
 function resetBoard() {
     createBoard();
     fillRack();
+    word = '';
+    lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
     document.getElementById("errors").innerHTML = "None";
 }
 //New Letters

@@ -8,6 +8,9 @@ $.get("assets/files/dictionary.txt", function(txt) {
     var words = txt.split("\n");
 
     for (var i = 0; i < words.length; i++) {
+        //text file holds lower case
+        //convert all the letters to uppercase
+        //words being compared are uppercase
         dictionary[i] = words[i].toUpperCase();
     }
 });
@@ -62,6 +65,7 @@ function checkWord() {
     for (var i = firstIndex; i <= lastIndex; i++) {
         if (lettersOnBoard[i] == '') {
             console.log("invalid Word");
+            document.getElementById("errors").innerHTML = "Word Not Valid<p>*Has Spaces</p>";
             invalidWord = true;
         }
     };
@@ -72,6 +76,7 @@ function submitWord() {
     checkWord();
     if (invalidWord) {
         console.log("word not valid");
+        document.getElementById("errors").innerHTML = "Word Not Valid<p>Word Might:<p>*Not Exist</p></p>";
     } else {
         findWord();
     }

@@ -87,5 +87,22 @@ div #tile6 {
     height: 100px;
 }
 
+.scoreBoard fieldset {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0px auto 30px auto;
+    width: 30px;
+    text-align: center;
+}
+
+.error fieldset {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 35px auto 0px auto;
+    width: 515px;
+    height: 100px;
+    text-align: center;
+}
+
 
 /* beautify preserve:end */

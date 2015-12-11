@@ -221,6 +221,13 @@ function resetBoard() {
     fillRack();
     word = '';
     lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+}
+//resets the whole game
+function resetGame() {
+    createBoard();
+    fillRack();
+    word = '';
+    lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
     resetScore();
     document.getElementById("errors").innerHTML = "None";
 }

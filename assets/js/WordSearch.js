@@ -17,10 +17,6 @@ $.get("assets/files/dictionary.txt", function(txt) {
         //convert all the letters to uppercase
         //words being compared are uppercase
         dictionary[i] = words[i].toUpperCase();
-
-        console.log("last word: " + dictionary[i]);
-
-
     }
 });
 console.log("Finished dictionary");
@@ -32,13 +28,15 @@ function findWord() {
     for (var i = dictionary.length - 1; i >= 0; i--) {
         if (dictionary[i] == word) {
             console.log("findWord(): Word found!");
-            document.getElementById("errors").innerHTML = "Word Found!";
+            document.getElementById("errors").innerHTML = "Word Found!, board is rest and score is intact";
+            resetBoard();
             wordFound = true;
         }
     }
     if (!wordFound) {
         console.log("findWord(): Word Not Found");
-        document.getElementById("errors").innerHTML = "Word Not Valid: Word Does Not Exist";
+        document.getElementById("errors").innerHTML = "Word Not Valid: Word Does Not Exist, board is reset and score will be corrected";
+        resetBoard();
     }
     console.log("End Search");
 }

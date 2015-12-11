@@ -55,7 +55,7 @@
     </header>
     <section>
         <div class="container">
-            <div id="scoreBoard">
+            <div class="scoreBoard">
                 <fieldset>
                     <legend>Score</legend>
                     <div id="points">0</div>
@@ -67,10 +67,10 @@
                 <img class="scrabbleRack" src="assets/images/scrabble/Scrabble_Rack.png" alt="Rack">
             </div>
             <button onclick="submitWord()">Submit Word</button>
-            <button onclick="resetBoard()">Reset</button>
+            <button onclick="resetGame()">Reset Game</button>
             <button onclick="newTiles()">New Tiles</button>
             <!--Dynamic Error Handing-->
-            <div>
+            <div class="error">
                 <fieldset>
                     <legend>MSG</legend>
                     <div id="errors">None</div>

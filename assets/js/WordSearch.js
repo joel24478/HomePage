@@ -6,6 +6,9 @@ var word = '';
 var invalidWord = false;
 //holds all words
 var dictionary = new Array();
+//To handle if space is found in word
+//So it doesnt empty out the word or board.
+//var spaceFound = false;
 // Do a jQuery Ajax request for the text dictionary
 console.log("Creating dictionary...");
 $.get("assets/files/dictionary.txt", function(txt) {
@@ -85,6 +88,8 @@ function submitWord() {
     checkWord();
     if (invalidWord) {
         console.log("submitWord(): word not valid");
+        score = prevScore;
+        resetBoard();
     } else {
         findWord();
     }

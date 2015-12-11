@@ -1,4 +1,5 @@
 var score = 0;
+var prevScore = 0;
 var letter = '';
 var letterIndex = 0;
 var DWS = false;
@@ -208,17 +209,22 @@ function updateScore(value) {
         document.getElementById("points").innerHTML = score;
     }
     console.log("updateScore(): New score = " + score);
-
+}
+//takes global score and corrects the display
+function newScore() {
+    document.getElementById("points").innerHTML = score;
 }
 //reset score to 0
 function resetScore() {
-    score = 0;
+    score = prevScore = 0;
     document.getElementById("points").innerHTML = score;
 }
+
 //resets the tiles and board
 function resetBoard() {
     createBoard();
     fillRack();
+    newScore();
     word = '';
     lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 }

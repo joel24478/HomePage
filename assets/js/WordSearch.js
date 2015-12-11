@@ -29,15 +29,20 @@ function findWord() {
         if (dictionary[i] == word) {
             console.log("findWord(): Word found!");
             document.getElementById("errors").innerHTML = "Word Found!, board is rest and score is intact";
-            resetBoard();
             wordFound = true;
+            //this makes sure the score is saved incase they spell out a wrong word in the next round
+            prevScore = score;
         }
     }
     if (!wordFound) {
         console.log("findWord(): Word Not Found");
         document.getElementById("errors").innerHTML = "Word Not Valid: Word Does Not Exist, board is reset and score will be corrected";
-        resetBoard();
+        console.log("current score: " + score);
+        //this returns the score back to the prevScore since they made a mistake the first time
+        score = prevScore;
+        console.log("new score: " + score);
     }
+    resetBoard();
     console.log("End Search");
 }
 //Setter for array lettersOnBoard

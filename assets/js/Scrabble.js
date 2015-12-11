@@ -21,7 +21,7 @@ function createBoard() {
     console.log("creating droppables");
     for (var i = 0; i < 15; i++) {
         if (i == 2 || i == 12) {
-            console.log("creating droppable DWS");
+            //console.log("creating droppable DWS");
             $("#DWS" + i).droppable({
                 tolerance: 'intersect',
                 //accept: '.ui-draggable',
@@ -58,7 +58,7 @@ function createBoard() {
                 tolerance: 'intersect'
             });
         } else if (i == 6 || i == 8) {
-            console.log("creating droppable DLS");
+            //console.log("creating droppable DLS");
             $("#DLS" + i).droppable({
                 tolerance: 'intersect',
                 //accept: '.ui-draggable',
@@ -94,7 +94,7 @@ function createBoard() {
                 tolerance: 'intersect'
             });
         } else {
-            console.log("creating droppable Blank");
+            //console.log("creating droppable Blank");
             $("#Blank" + i).droppable({
                 tolerance: 'intersect',
                 //accept: '.ui-draggable',

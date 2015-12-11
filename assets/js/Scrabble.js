@@ -1,6 +1,7 @@
 var score = 0;
 var letter = '';
 var letterIndex = 0;
+var DWS = false;
 //Sets up the board to a basic oneline pattern
 function createBoard() {
     strContent = '';
@@ -42,6 +43,8 @@ function createBoard() {
                     ui.draggable.draggable("option", "disabled", true);
                     console.log("passed value to updateScore: " + ui.draggable.children("img").attr("alt"));
                     console.log("tile being dropped: " + ui.draggable.attr("id"));
+                    //Double Word Score is activated to double score
+                    DWS = true;
                     //update score based on the value of the tile which is stored in alt attribute
                     updateScore(parseInt(ui.draggable.children("img").attr("alt")));
                     //get the letter of the tile
@@ -180,17 +183,44 @@ function fillRack() {
 /**
  * @param {string} letter - tile piece letter
  * @param {string} number - to create id for tile piece
- *gets passed a letter and makes html code to be added
+ * gets passed a letter and makes html code to be added
  * @returns {string} - html code
  */
 function addTile(letter, number, value) {
     return "<div id='tile" + number + "'> <img class='tiles' src='assets/images/scrabble/Scrabble_Tile_" + letter + ".jpg' alt='" + value + "'></div>";
 }
+
+//New Letters
+function newTiles() {
+    fillRack();
+}
+
 /**
  * @param {integer} value - tile piece value
- *gets passed a the value to be added onto score
+ * gets passed a the value to be added onto score
  */
 function updateScore(value) {
     score += value;
+    console.log("updateScore(): score = " + score);
+    if (DWS) {
+        document.getElementById("points").innerHTML = score * 2;
+    } else {
+        document.getElementById("points").innerHTML = score;
+    }
+    console.log("updateScore(): New score = " + score);
+
+}
+//reset score to 0
+function resetScore() {
+    score = 0;
     document.getElementById("points").innerHTML = score;
+}
+//resets the tiles and board
+function resetBoard() {
+    createBoard();
+    fillRack();
+    word = '';
+    lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+    resetScore();
+    document.getElementById("errors").innerHTML = "None";
 }

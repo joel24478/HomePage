@@ -1,3 +1,9 @@
+//letters on the board
+var lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+//words on the board
+var wordsOnBoard = [];
+var word = '';
+var invalidWord = false;
 //holds all words
 var dictionary = new Array();
 // Do a jQuery Ajax request for the text dictionary
@@ -11,15 +17,13 @@ $.get("assets/files/dictionary.txt", function(txt) {
         //convert all the letters to uppercase
         //words being compared are uppercase
         dictionary[i] = words[i].toUpperCase();
+        if (i = words.length - 1) {
+            console.log("last word: " + words[i]);
+        }
+
     }
 });
 console.log("Finished dictionary");
-//letters on the board
-var lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-//words on the board
-var wordsOnBoard = [];
-var word = '';
-var invalidWord = false;
 
 //Finds if word formed is an actual word
 function findWord() {
@@ -27,13 +31,13 @@ function findWord() {
     console.log("Searching for word: " + word);
     for (var i = dictionary.length - 1; i >= 0; i--) {
         if (dictionary[i] == word) {
-            console.log("Word found!");
+            console.log("findWord(): Word found!");
             document.getElementById("errors").innerHTML = "Word Found!";
             wordFound = true;
         }
     }
     if (!wordFound) {
-        console.log("Word Not Found");
+        console.log("findWord(): Word Not Found");
         document.getElementById("errors").innerHTML = "Word Not Valid: Word Does Not Exist";
     }
     console.log("End Search");
@@ -66,33 +70,21 @@ function checkWord() {
     for (var i = firstIndex; i <= lastIndex; i++) {
         //if theres a white space then word is invalid
         if (lettersOnBoard[i] == '') {
-            console.log("invalid Word");
+            console.log("checkWord(): invalid Word");
             document.getElementById("errors").innerHTML = "Word Not Valid: Has Spaces Between Letters";
             invalidWord = true;
         }
     };
-    console.log("word: " + word);
+    console.log("checkWord(): word: " + word);
 }
 //function for the submit button
 function submitWord() {
     checkWord();
     if (invalidWord) {
-        console.log("word not valid");
+        console.log("submitWord(): word not valid");
     } else {
         findWord();
     }
     word = '';
     lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-}
-//resets the tiles and board
-function resetBoard() {
-    createBoard();
-    fillRack();
-    word = '';
-    lettersOnBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-    document.getElementById("errors").innerHTML = "None";
-}
-//New Letters
-function newTiles() {
-    fillRack();
 }

@@ -88,8 +88,6 @@ function submitWord() {
     checkWord();
     if (invalidWord) {
         console.log("submitWord(): word not valid");
-        score = prevScore;
-        resetBoard();
     } else {
         findWord();
     }

@@ -18,7 +18,7 @@ $.get("assets/files/dictionary.txt", function(txt) {
         //words being compared are uppercase
         dictionary[i] = words[i].toUpperCase();
         if (i = words.length - 1) {
-            console.log("last word: " + words[i]);
+            console.log("last word: " + dictionary[i]);
         }
 
     }
